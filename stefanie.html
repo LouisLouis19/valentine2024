@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's Day App</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+
+    #container {
+      text-align: center;
+    }
+
+    #question {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    #buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    }
+
+    #yesButton {
+      background-color: #4caf50;
+      color: #fff;
+    }
+
+    #noButton {
+      background-color: #f44336;
+      color: #fff;
+    }
+
+    #noButton.smaller {
+      transform: scale(0.8);
+    }
+
+    #yesButton.bigger {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <div id="question">Will you be my valentine next year?</div>
+  <div id="buttons">
+    <button id="noButton" onclick="handleButtonClick('no')">No</button>
+    <button id="yesButton" onclick="handleButtonClick('yes')">Yes</button>
+  </div>
+</div>
+
+<script>
+    let clickCount = 0;
+  
+    function handleButtonClick(answer) {
+      const noButton = document.getElementById('noButton');
+      const yesButton = document.getElementById('yesButton');
+  
+      if (answer === 'no') {
+        clickCount++;
+        noButton.classList.add('smaller');
+        noButton.style.transform = `scale(${0.8 - clickCount * 0.1})`; // Decrease scale on each click
+        yesButton.classList.remove('bigger');
+      } else if (answer === 'yes') {
+        noButton.classList.remove('smaller');
+        yesButton.classList.add('bigger');
+        setTimeout(() => {
+          window.location.href = 'cute-images.html'; // Navigate to a new page with cute images
+        }, 1000); // You can adjust the delay (in milliseconds) as needed
+      }
+    }
+  </script>
+  
+
+</body>
+</html>
